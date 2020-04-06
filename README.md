@@ -150,8 +150,11 @@ https://github.com/samsonadmin/mtcnn_facenet_cpp_tensorRT
 
 
 mkdir build && cd build
+
 cmake -DCMAKE_BUILD_TYPE=Release ..
+
 make -j${nproc}
+
 
 -gencode arch=compute_53,code=sm_53
 
@@ -169,18 +172,27 @@ more than 30mins
 
 [src/main.cpp]
 int videoFrameWidth = **1280**; 
+
 int videoFrameHeight = **720**; 
+
 bool isCSICam = **false**;
+
 
 VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, **30**, isCSICam);
 
+
 ## remove the built engine files
 rm ../facenetModels/facenet.uff
+
 rm ../facenetModels/facenet.engine
+
 rm ../mtCNNModels/*.engine
 
+
 cd ..
+
 step01_pb_to_uff.py
+
 mv facenet.uff facenetModels/
 
 
