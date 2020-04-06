@@ -136,7 +136,9 @@ were trained on.
 Original author Niclas Wesemann <br>
 [niclaswesemann@gmail.com](mailto:niclas.wesemann@gmail.com) <br>
 
-## Readme - samson
+## Readme - updated by Samson
+
+This is an software which can perform realtime inference on human face with mtcnn with tensorRT, 
 
 ## mtcnn_facenet_cpp_tensorRT
 
@@ -159,23 +161,26 @@ make -j${nproc}
 
 ## Building the engines before running takes
 for 720p res
-started from 7.16am
-more than 40mins 
+started from 7.55am
+more than 30mins 
 
 
 ## To modify the src resolution
 
 [src/main.cpp]
-int videoFrameWidth = 1080; 
-int videoFrameHeight = 720; 
+int videoFrameWidth = **1280**; 
+int videoFrameHeight = **720**; 
+bool isCSICam = **false**;
 
-VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, 30, isCSICam);
+VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, **30**, isCSICam);
 
 ## remove the built engine files
 rm ../facenetModels/facenet.uff
 rm ../facenetModels/facenet.engine
 rm ../mtCNNModels/*.engine
 
-
+cd ..
+step01_pb_to_uff.py
+mv facenet.uff facenetModels/
 
 
