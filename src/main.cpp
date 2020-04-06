@@ -24,25 +24,30 @@ int main()
     if (!initLibNvInferPlugins(&gLogger, "")) { return 1; }
 
     // USER DEFINED VALUES
+	
     const string uffFile="../facenetModels/facenet.uff";
     const string engineFile="../facenetModels/facenet.engine";
+	/*
+    const string uffFile="../facenetModels/facenet_1920x1080.uff";
+    const string engineFile="../facenetModels/facenet_1920x1080.engine";
+	*/
     DataType dtype = DataType::kHALF;
     //DataType dtype = DataType::kFLOAT;
     bool serializeEngine = true;
     int batchSize = 1;
     int nbFrames = 0;
-    int videoFrameWidth = 640;
-    int videoFrameHeight = 480;
+    int videoFrameWidth = 1080; //samson
+    int videoFrameHeight = 720; //samson
     int maxFacesPerScene = 5;
     float knownPersonThreshold = 1.;
-    bool isCSICam = true;
+    bool isCSICam = false;
 
     // init facenet
     FaceNetClassifier faceNet = FaceNetClassifier(gLogger, dtype, uffFile, engineFile, batchSize, serializeEngine,
             knownPersonThreshold, maxFacesPerScene, videoFrameWidth, videoFrameHeight);
 
     // init opencv stuff
-    VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, 60, isCSICam);
+    VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, 30, isCSICam);
     cv::Mat frame;
 
     // init mtCNN

@@ -125,7 +125,7 @@ void FaceNetClassifier::preprocessFaces() {
     // preprocess according to facenet training and flatten for input to runtime engine
     for (int i = 0; i < m_croppedFaces.size(); i++) {
         //mean and std
-        cv::cvtColor(m_croppedFaces[i].faceMat, m_croppedFaces[i].faceMat, CV_RGB2BGR);
+        cv::cvtColor(m_croppedFaces[i].faceMat, m_croppedFaces[i].faceMat, cv::COLOR_RGB2BGR);
         cv::Mat temp = m_croppedFaces[i].faceMat.reshape(1, m_croppedFaces[i].faceMat.rows * 3);
         cv::Mat mean3;
         cv::Mat stddev3;

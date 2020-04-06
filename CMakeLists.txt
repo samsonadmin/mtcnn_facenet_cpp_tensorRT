@@ -15,17 +15,17 @@ set(
 	${CUDA_NVCC_FLAGS}; 
     -O3 
 	-gencode arch=compute_53,code=sm_53
-	-gencode arch=compute_62,code=sm_62
+	#-gencode arch=compute_62,code=sm_62
 )
 
 if(CUDA_VERSION_MAJOR GREATER 9)
-	message("-- CUDA ${CUDA_VERSION_MAJOR} detected, enabling SM_72")
+	#message("-- CUDA ${CUDA_VERSION_MAJOR} detected, enabling SM_72")
 
-	set(
-		CUDA_NVCC_FLAGS
-		${CUDA_NVCC_FLAGS}; 
-		-gencode arch=compute_72,code=sm_72
-	)
+	#set(
+	#	CUDA_NVCC_FLAGS
+	#	${CUDA_NVCC_FLAGS}; 
+	#	-gencode arch=compute_72,code=sm_72
+	#)
 
 endif()
 
