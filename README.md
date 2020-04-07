@@ -148,15 +148,21 @@ https://github.com/samsonadmin/mtcnn_facenet_cpp_tensorRT
 
 ## modify the CMakeLists.txt
 
-
+```bash
 mkdir build && cd build
-*cmake -DCMAKE_BUILD_TYPE=Release ..
-*make -j${nproc}
-*-gencode arch=compute_53,code=sm_53
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make -j${nproc}
+```
 
+## modify the CMakeLists.txt
+```bash
+-gencode arch=compute_53,code=sm_53
+```
 
 ## Run from the build direcory
-* ./mtcnn_facenet_cpp_tensorRT
+```bash
+./mtcnn_facenet_cpp_tensorRT
+```
 
 ## Building the engines before running takes
 * for 720p res
@@ -167,12 +173,13 @@ more than 30mins
 ## To modify the src resolution
 
 [src/main.cpp]
-* int videoFrameWidth = **1280**; 
-* int videoFrameHeight = **720**; 
-* bool isCSICam = **false**;
+```c++
+int videoFrameWidth = **1280**; 
+int videoFrameHeight = **720**; 
+bool isCSICam = **false**;
 
-* VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, **30**, isCSICam);
-
+VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, **30**, isCSICam);
+```
 
 ## remove the built engine files
 ```bash
