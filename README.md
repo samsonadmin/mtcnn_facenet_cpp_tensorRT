@@ -188,10 +188,10 @@ rm ../facenetModels/facenet.engine
 rm ../mtCNNModels/*.engine
 
 cd ..
-step01_pb_to_uff.py
+./step01_pb_to_uff.py
 mv facenet.uff facenetModels/
 ```
 
 My test with 1080p Performance on **NVIDIA Jetson Nano**
-* **Total:** ~3fps
+* **Total:** ~2.9fps
 
