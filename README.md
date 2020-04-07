@@ -193,5 +193,6 @@ mv facenet.uff facenetModels/
 ```
 
 My test with 1080p Performance on **NVIDIA Jetson Nano**
-* **Total:** ~2.9fps
+1080p **Total:** ~3.5fps
+720p **Total:** ~9fps
 
