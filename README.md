@@ -156,10 +156,10 @@ mkdir build && cd build
 
 
 ## Run from the build direcory
-*./mtcnn_facenet_cpp_tensorRT
+* ./mtcnn_facenet_cpp_tensorRT
 
 ## Building the engines before running takes
-*for 720p res
+* for 720p res
 started from 7.55am
 more than 30mins 
 
@@ -167,18 +167,21 @@ more than 30mins
 ## To modify the src resolution
 
 [src/main.cpp]
-*int videoFrameWidth = **1280**; 
-*int videoFrameHeight = **720**; 
-*bool isCSICam = **false**;
+* int videoFrameWidth = **1280**; 
+* int videoFrameHeight = **720**; 
+* bool isCSICam = **false**;
 
-*VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, **30**, isCSICam);
+* VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, **30**, isCSICam);
 
 
 ## remove the built engine files
-*rm ../facenetModels/facenet.uff
-*rm ../facenetModels/facenet.engine
-*rm ../mtCNNModels/*.engine
+```bash
+rm ../facenetModels/facenet.uff
+rm ../facenetModels/facenet.engine
+rm ../mtCNNModels/*.engine
 
-*cd ..
-*step01_pb_to_uff.py
-*mv facenet.uff facenetModels/
+cd ..
+step01_pb_to_uff.py
+mv facenet.uff facenetModels/
+```
+
