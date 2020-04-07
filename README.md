@@ -192,3 +192,6 @@ step01_pb_to_uff.py
 mv facenet.uff facenetModels/
 ```
 
+My test with 1080p Performance on **NVIDIA Jetson Nano**
+* **Total:** ~3fps
+
