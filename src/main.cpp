@@ -17,7 +17,7 @@ using namespace nvinfer1;
 using namespace nvuffparser;
 
 
-int main()
+int main(int argc, char** argv)
 {
     Logger gLogger = Logger();
     // Register default TRT plugins (e.g. LRelu_TRT)
@@ -25,20 +25,31 @@ int main()
 
     // USER DEFINED VALUES
 	
-    const string uffFile="../facenetModels/facenet.uff";
+    /*
+	const string uffFile="../facenetModels/facenet.uff";
     const string engineFile="../facenetModels/facenet.engine";
+	*/
+	
+
 	/*
+    const string uffFile="../facenetModels/facenet_1280x720.uff";
+    const string engineFile="../facenetModels/facenet_1280x720.engine";
+	*/
+
+
+	
     const string uffFile="../facenetModels/facenet_1920x1080.uff";
     const string engineFile="../facenetModels/facenet_1920x1080.engine";
-	*/
+	
+	
     DataType dtype = DataType::kHALF;
     //DataType dtype = DataType::kFLOAT;
     bool serializeEngine = true;
     int batchSize = 1;
     int nbFrames = 0;
-    int videoFrameWidth = 1080; //samson
-    int videoFrameHeight = 720; //samson
-    int maxFacesPerScene = 5;
+    int videoFrameWidth = 1920; //samson
+    int videoFrameHeight = 1080; //samson
+    int maxFacesPerScene = 6;
     float knownPersonThreshold = 1.;
     bool isCSICam = false;
 
@@ -47,8 +58,17 @@ int main()
             knownPersonThreshold, maxFacesPerScene, videoFrameWidth, videoFrameHeight);
 
     // init opencv stuff
-    VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, 30, isCSICam);
+    //VideoStreamer videoStreamer = VideoStreamer(0, videoFrameWidth, videoFrameHeight, 60, isCSICam);
+	//samson
+
+	VideoStreamer videoStreamer = VideoStreamer(argv[1], videoFrameWidth, videoFrameHeight);
+
+
     cv::Mat frame;
+
+	//fullscreen
+	cv::namedWindow("VideoSource", cv::WINDOW_NORMAL);
+	cv::setWindowProperty("VideoSource", cv::WND_PROP_FULLSCREEN, cv::WINDOW_FULLSCREEN);
 
     // init mtCNN
     mtcnn mtCNN(videoFrameHeight, videoFrameWidth);
